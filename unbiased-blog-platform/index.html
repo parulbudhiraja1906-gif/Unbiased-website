@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unbiased Marketing Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#171F26;
+    --paper:#FFFFFF;
+    --panel:#F2F4F1;
+    --emerald:#1F6F54;
+    --emerald-deep:#154D3A;
+    --brass:#B4863A;
+    --muted:#63707A;
+    --line:#E1E5E0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--muted);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:18px;
+  }
+  .eyebrow .idx{
+    color:var(--emerald);
+    font-weight:500;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.1;
+    letter-spacing:-0.01em;
+  }
+
+  /* NAV */
+  header{
+    border-bottom:1px solid var(--line);
+    position:sticky; top:0; background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(6px);
+    z-index:10;
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 0;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:-0.01em;
+    white-space:nowrap;
+  }
+  @media(max-width:520px){
+    .logo{font-size:13.5px;}
+  }
+  .navlinks{
+    display:flex; gap:32px; align-items:center;
+    font-size:14px; color:var(--muted);
+  }
+  .navlinks a:hover{color:var(--ink);}
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    padding:11px 20px;
+    border:1.5px solid var(--ink);
+    display:inline-block;
+    transition:all .15s ease;
+  }
+  .btn:hover{background:var(--ink); color:var(--paper);}
+  .btn-primary{
+    background:var(--emerald);
+    border-color:var(--emerald);
+    color:var(--paper);
+  }
+  .btn-primary:hover{background:var(--emerald-deep); border-color:var(--emerald-deep);}
+  .btn-ghost{border-color:var(--line); color:var(--muted);}
+  .btn-ghost:hover{background:var(--ink); border-color:var(--ink); color:var(--paper);}
+  @media(max-width:780px){.navlinks{display:none;}}
+
+  /* HERO */
+  .hero{
+    padding:88px 0 76px;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:start;
+  }
+  @media(max-width:900px){.hero{grid-template-columns:1fr; padding:56px 0 48px;}}
+  .hero h1{
+    font-size:clamp(34px, 4.6vw, 54px);
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--emerald);
+  }
+  .hero .sub{
+    font-size:17px;
+    color:var(--muted);
+    max-width:480px;
+    margin-bottom:32px;
+  }
+  .hero .actions{display:flex; gap:12px; flex-wrap:wrap;}
+
+  .diag-card{
+    background:var(--panel);
+    padding:28px 26px;
+    border:1px solid var(--line);
+  }
+  .diag-card .cardlabel{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--muted);
+    margin-bottom:16px;
+  }
+  .diag-item{
+    display:flex; gap:12px; align-items:flex-start;
+    padding:12px 0;
+    border-top:1px solid var(--line);
+    font-size:14.5px;
+  }
+  .diag-item:first-of-type{border-top:none;}
+  .check{
+    flex:0 0 16px; width:16px; height:16px;
+    border:1.5px solid var(--brass);
+    margin-top:2px;
+  }
+
+  /* SECTION generic */
+  section{padding:64px 0;}
+  .section-border{border-top:1px solid var(--line);}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:24px; margin-bottom:36px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(24px,3vw,32px); max-width:620px;}
+
+  /* PROBLEM */
+  .problem-body p{
+    font-size:18px;
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    color:var(--ink);
+    max-width:760px;
+    line-height:1.5;
+  }
+  .problem-body p .hl{
+    background:linear-gradient(transparent 62%, #E9D8B8 62%);
+  }
+
+  /* SHIFT */
+  .shift-row{
+    display:flex; align-items:center; gap:28px;
+    flex-wrap:wrap;
+  }
+  .shift-pill{
+    flex:1; min-width:220px;
+    padding:22px 24px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+  .shift-pill.from{
+    background:var(--panel);
+    color:var(--muted);
+    border:1px dashed var(--line);
+  }
+  .shift-pill.to{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .shift-pill .big{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    text-transform:none;
+    letter-spacing:0;
+    display:block;
+    margin-top:6px;
+  }
+  .arrow{font-size:22px; color:var(--emerald); flex:0 0 auto;}
+  .shift-note{
+    margin-top:28px;
+    font-size:15px;
+    color:var(--muted);
+    max-width:600px;
+  }
+  .shift-note strong{color:var(--ink); font-weight:600;}
+
+  /* WHY US */
+  .whyus{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:40px;
+    align-items:start;
+  }
+  @media(max-width:700px){.whyus{grid-template-columns:1fr;}}
+  .portrait{
+    aspect-ratio:4/5;
+    background:var(--panel);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    text-align:center;
+    padding:16px;
+    overflow:hidden;
+  }
+  .portrait img{width:100%; height:100%; object-fit:cover; display:block;}
+  .whyus h3{font-size:24px; margin-bottom:14px; max-width:520px;}
+  .whyus p{color:var(--muted); font-size:15px; max-width:560px; margin-bottom:22px;}
+  .logostrip{
+    display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .logochip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    border:1px solid var(--line);
+    padding:6px 12px;
+  }
+
+  /* HOW WE WORK */
+  .howwework{
+    background:var(--emerald-deep);
+    color:var(--paper);
+  }
+  .howwework .eyebrow{color:#9FCBBB;}
+  .howwework .eyebrow .idx{color:#D9C08C;}
+  .howwework h3{font-size:clamp(24px,3vw,30px); max-width:600px; margin-bottom:16px;}
+  .howwework p{color:#C7DED4; max-width:560px; font-size:15.5px;}
+
+  /* SERVICES */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media(max-width:780px){.services-grid{grid-template-columns:1fr;}}
+  .service-card{
+    background:var(--paper);
+    padding:30px 26px;
+  }
+  .service-card .idx{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--brass);
+    margin-bottom:14px;
+    display:block;
+  }
+  .service-card h4{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .service-card p{font-size:14px; color:var(--muted);}
+
+  /* PROOF */
+  .proof-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:14px;
+    margin-bottom:36px;
+  }
+  @media(max-width:700px){.proof-grid{grid-template-columns:1fr;}}
+  .proof-item{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px 20px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    font-size:14px;
+  }
+  .proof-item .brand{font-weight:600; font-family:'IBM Plex Mono', monospace; font-size:12.5px;}
+  .proof-item .result{color:var(--emerald-deep); font-weight:600;}
+
+  .testimonial{
+    border-left:2px solid var(--brass);
+    padding-left:22px;
+    max-width:640px;
+    margin-bottom:24px;
+  }
+  .testimonial p{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:17px;
+    color:var(--ink);
+    margin-bottom:10px;
+  }
+  .testimonial cite{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+    font-style:normal;
+  }
+
+  /* PROCESS */
+  .process-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  @media(max-width:780px){.process-row{grid-template-columns:1fr 1fr;}}
+  @media(max-width:460px){.process-row{grid-template-columns:1fr;}}
+  .process-step .num{
+    font-family:'Fraunces', serif;
+    font-size:32px;
+    color:var(--line);
+    -webkit-text-stroke:1.3px var(--muted);
+    color:transparent;
+    margin-bottom:10px;
+    display:block;
+  }
+  .process-step h4{font-size:15px; margin-bottom:8px; font-family:'IBM Plex Sans'; font-weight:600;}
+  .process-step p{font-size:13.5px; color:var(--muted);}
+
+  /* BLOG */
+  .blog-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  @media(max-width:780px){.blog-grid{grid-template-columns:1fr;}}
+  .blog-card{display:block;}
+  .blog-thumb{
+    aspect-ratio:16/10;
+    background:var(--panel);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    margin-bottom:16px;
+    overflow:hidden;
+  }
+  .blog-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+  .blog-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--brass);
+    margin-bottom:8px;
+  }
+  .blog-card h4{
+    font-family:'Fraunces', serif;
+    font-size:18px;
+    font-weight:600;
+    line-height:1.25;
+    margin-bottom:8px;
+  }
+  .blog-card p{
+    font-size:13.5px;
+    color:var(--muted);
+    margin-bottom:12px;
+  }
+  .blog-link{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--emerald-deep);
+    border-bottom:1px solid var(--emerald-deep);
+    padding-bottom:1px;
+  }
+  .blog-card:hover .blog-link{color:var(--brass); border-color:var(--brass);}
+
+  /* PRICING */
+  .pricing-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  @media(max-width:780px){.pricing-grid{grid-template-columns:1fr;}}
+  .price-card{
+    border:1px solid var(--line);
+    padding:28px 24px;
+  }
+  .price-card .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:14px;
+    display:block;
+  }
+  .price-card .amount{
+    font-family:'Fraunces', serif;
+    font-size:26px;
+    margin-bottom:10px;
+  }
+  .price-card p{font-size:13.5px; color:var(--muted);}
+
+  /* CTA */
+  .cta{
+    background:var(--ink);
+    color:var(--paper);
+    text-align:center;
+    padding:90px 0;
+  }
+  .cta h2{
+    font-size:clamp(28px,4vw,42px);
+    max-width:640px;
+    margin:0 auto 26px;
+  }
+  .cta .contact{
+    margin-top:28px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:#9AA6AD;
+  }
+  .cta .contact a{border-bottom:1px solid #445; padding-bottom:1px;}
+  .cta .contact a:hover{color:var(--paper); border-color:var(--paper);}
+
+  footer{
+    background:var(--ink);
+    color:#7C878E;
+    font-size:12px;
+    font-family:'IBM Plex Mono', monospace;
+    text-align:center;
+    padding:20px 0 32px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo">Unbiased Consulting with Parul</div>
+      <div class="navlinks">
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#proof">Clients</a>
+        <a href="#blog">Blog</a>
+        <a href="#about">About</a>
+      </div>
+      <a href="#cta" class="btn btn-primary">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="wrap hero">
+    <div>
+      <div class="eyebrow"><span class="idx">Consulting</span> — for founder-led companies</div>
+      <h1>Senior marketing leadership, <em>without</em> the full-time hire.</h1>
+      <p class="sub">Fractional CMO services for founders whose marketing has outgrown what they can run themselves.</p>
+      <div class="actions">
+        <a href="#cta" class="btn btn-primary">Book a discovery call</a>
+        <a href="#services" class="btn btn-ghost">See how we work</a>
+      </div>
+    </div>
+    <div class="diag-card">
+      <div class="cardlabel">Sound familiar?</div>
+      <div class="diag-item"><span class="check"></span> You're the founder, the CMO, and out of hours.</div>
+      <div class="diag-item"><span class="check"></span> Marketing is entirely founder-led — and it won't scale.</div>
+      <div class="diag-item"><span class="check"></span> A full-time senior hire feels too risky, right now.</div>
+      <div class="diag-item"><span class="check"></span> Your internal team needs direction, not just headcount.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section-border">
+  <div class="wrap problem-body">
+    <div class="eyebrow"><span class="idx">01</span> The problem</div>
+    <p>Growth is stuck. You've tried things, but <span class="hl">nothing is quite changing</span> — and you're not sure if the answer is your team, an agency, or a consultant.</p>
+  </div>
+</section>
+
+<!-- SHIFT -->
+<section class="section-border">
+  <div class="wrap">
+    <div class="eyebrow"><span class="idx">02</span> What changes</div>
+    <div class="shift-row">
+      <div class="shift-pill from">From<span class="big">Tactical marketing</span></div>
+      <div class="arrow">→</div>
+      <div class="shift-pill to">To<span class="big">Sustainable, growth-led marketing</span></div>
+    </div>
+    <p class="shift-note"><strong>Strategy → execution → results.</strong> Commercial terms tied to achievement, not hours billed.</p>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section-border" id="about">
+  <div class="wrap whyus">
+    <div class="portrait">
+      <img src="/assets/images/parul-portrait.jpg" alt="Parul Budhiraja"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <span style="display:none;">Photo —<br>Parul Budhiraja</span>
+    </div>
+    <div>
+      <div class="eyebrow"><span class="idx">03</span> Why us</div>
+      <h3>Two decades building brands at Samsung, Nestlé, Bata &amp; Snapdeal — now applied to your business.</h3>
+      <p>Led by Parul Budhiraja — 5 Effie awards, MBA from MICA Ahmedabad, former strategist at Cheil, Leo Burnett, DDB and Grey. She's shaped brand strategy for global giants and founder-led startups alike.</p>
+      <div class="logostrip">
+        <span class="logochip">Samsung</span>
+        <span class="logochip">Nestlé</span>
+        <span class="logochip">Bata</span>
+        <span class="logochip">Snapdeal</span>
+        <span class="logochip">McDonald's</span>
+        <span class="logochip">GSK</span>
+        <span class="logochip">Marico</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="howwework">
+  <div class="wrap">
+    <div class="eyebrow"><span class="idx">04</span> How we work</div>
+    <h3>Your customer is our first client.</h3>
+    <p>Every recommendation is grounded in real consumer insight, not a template. We work side by side with your team — not from the sidelines — with shared accountability for the outcome.</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section-border" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="idx">05</span> Services</div>
+        <h2>Three ways we work with you</h2>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="idx">01</span>
+        <h4>Fractional CMO as a Service</h4>
+        <p>Brand architecture, market understanding, funnel analysis, budget planning and marketing team structuring.</p>
+      </div>
+      <div class="service-card">
+        <span class="idx">02</span>
+        <h4>Brand &amp; Marketing Management</h4>
+        <p>Project management across tactics, briefing and approving executions, agency and partner ecosystem, hiring.</p>
+      </div>
+      <div class="service-card">
+        <span class="idx">03</span>
+        <h4>In-House Team Uplift</h4>
+        <p>AI x creative workshops, better-ads-and-content sessions with partner agencies, DIY strategy guided by Parul.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="section-border" id="proof">
+  <div class="wrap">
+    <div class="eyebrow"><span class="idx">06</span> Track record</div>
+    <div class="proof-grid">
+      <div class="proof-item"><span class="brand">BATA</span><span class="result">2.5x share growth</span></div>
+      <div class="proof-item"><span class="brand">BLUESTONE</span><span class="result">Seed to retail</span></div>
+      <div class="proof-item"><span class="brand">SNAPDEAL</span><span class="result">Insight-led fashion growth</span></div>
+      <div class="proof-item"><span class="brand">MCDONALD'S</span><span class="result">Breakfast launch, India</span></div>
+      <div class="proof-item"><span class="brand">SAMSUNG</span><span class="result">Premium Flip/Fold leadership</span></div>
+      <div class="proof-item"><span class="brand">LIVON</span><span class="result">Written-off → ₹100cr brand</span></div>
+    </div>
+
+    <div class="testimonial">
+      <p>"Parul is a very sharp marketing brain — she identifies the problem and takes clear action to create a solution. We finally foresee our marketing efforts reaping results."</p>
+      <cite>— Nitin Jain, Jewell Paints</cite>
+    </div>
+    <div class="testimonial">
+      <p>"We had a vague idea of what we wanted to build. Working with Unbiased was rapid-fire — positioning, platform, and film ready in a month and a half."</p>
+      <cite>— Rajesh Poddar, Paracoat</cite>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section-border" id="process">
+  <div class="wrap">
+    <div class="eyebrow"><span class="idx">07</span> Process</div>
+    <div class="process-row">
+      <div class="process-step">
+        <span class="num">01</span>
+        <h4>Discovery &amp; Need Assessment</h4>
+        <p>We dive into your marketing, challenges and goals to see if we're a good fit.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">02</span>
+        <h4>Proposal &amp; Roadmap</h4>
+        <p>A tailored plan — objectives, team structure, preliminary roadmap.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">03</span>
+        <h4>Engagement &amp; Onboarding</h4>
+        <p>We integrate seamlessly with your team, working side by side.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">04</span>
+        <h4>Execution &amp; Iteration</h4>
+        <p>We oversee the roadmap — brand strategy, campaigns, continuous optimization.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="section-border" id="blog">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="idx">08</span> Blog</div>
+        <h2>Notes on brand & growth strategy</h2>
+      </div>
+      <a href="/blog/" class="btn btn-ghost">See all posts</a>
+    </div>
+    <div class="blog-grid">
+      <a href="/blog/founder-led-marketing/" class="blog-card">
+        <div class="blog-thumb">
+          <img src="/assets/images/blog-founder-led-marketing.jpg" alt=""
+               onerror="this.style.display='none'; this.parentElement.textContent='Post image';">
+        </div>
+        <div class="blog-meta">Brand Strategy</div>
+        <h4>When founder-led marketing starts costing you growth</h4>
+        <p>The signs that it's time to bring in senior marketing leadership — before you're forced to.</p>
+        <span class="blog-link">Read the post →</span>
+      </a>
+      <a href="/blog/fractional-cmo-vs-full-time/" class="blog-card">
+        <div class="blog-thumb">
+          <img src="/assets/images/blog-fractional-cmo-vs-full-time.jpg" alt=""
+               onerror="this.style.display='none'; this.parentElement.textContent='Post image';">
+        </div>
+        <div class="blog-meta">Fractional CMO</div>
+        <h4>Fractional CMO vs. full-time hire: what actually changes</h4>
+        <p>A practical breakdown of cost, commitment, and speed — and when each makes sense.</p>
+        <span class="blog-link">Read the post →</span>
+      </a>
+      <a href="/blog/livon-turnaround/" class="blog-card">
+        <div class="blog-thumb">
+          <img src="/assets/images/blog-livon-turnaround.jpg" alt=""
+               onerror="this.style.display='none'; this.parentElement.textContent='Post image';">
+        </div>
+        <div class="blog-meta">Case Notes</div>
+        <h4>How we took Livon from written-off to a ₹100cr brand</h4>
+        <p>A look inside the insight and positioning work behind the turnaround.</p>
+        <span class="blog-link">Read the post →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta" id="cta">
+  <div class="wrap">
+    <h2>Ready to stop being your own CMO?</h2>
+    <a href="https://topmate.io/parul_budhiraja" class="btn btn-primary">Book a discovery call</a>
+    <div class="contact">
+      <a href="mailto:consult@parulbudhiraja.com">consult@parulbudhiraja.com</a>
+      &nbsp;·&nbsp; WhatsApp +91 9958222501
+    </div>
+  </div>
+</section>
+
+<footer>
+  © Unbiased Marketing Consulting — Parul Budhiraja
+</footer>
+
+</body>
+</html>

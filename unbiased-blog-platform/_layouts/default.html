@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="/" class="logo">Unbiased Consulting with Parul</a>
+      <div class="navlinks">
+        <a href="/#services">Services</a>
+        <a href="/#process">Process</a>
+        <a href="/#proof">Clients</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#about">About</a>
+      </div>
+      <a href="/#cta" class="btn btn-primary">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+{{ content }}
+
+<footer>
+  © {{ site.title }}
+</footer>
+
+</body>
+</html>

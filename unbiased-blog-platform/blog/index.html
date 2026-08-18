@@ -1,0 +1,27 @@
+---
+layout: default
+title: Blog
+---
+<section class="blog-hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="idx">Blog</span></div>
+    <h1>Notes on brand &amp; growth strategy</h1>
+    <p>Thinking on founder-led marketing, fractional leadership, and what actually moves growth — written from twenty years in the trenches.</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="blog-grid">
+    {% for post in site.posts %}
+    <a href="{{ post.url }}" class="blog-card">
+      <div class="blog-thumb">
+        {% if post.image %}<img src="{{ post.image }}" alt="">{% else %}Post image{% endif %}
+      </div>
+      <div class="blog-meta">{{ post.category | default: "Notes" }}</div>
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+      <span class="blog-link">Read the post →</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
