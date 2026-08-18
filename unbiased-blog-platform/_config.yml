@@ -6,11 +6,6 @@ baseurl: ""
 markdown: kramdown
 permalink: /blog/:title/
 
-collections:
-  posts:
-    output: true
-    permalink: /blog/:title/
-
 defaults:
   - scope:
       path: ""
